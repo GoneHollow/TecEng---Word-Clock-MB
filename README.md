@@ -2,4 +2,9 @@
  ADT 2. Semester - Technology Engineering
 
 ## Contents
-	- clockProg.ino
+	* Program: clockProg.ino
+	* Concept
+	* Manual
+	* Screenshots Layout Front
+	* .obj file of front plate
+	* Sources
