@@ -78,6 +78,7 @@ void loop() {
     pixels1.setPixelColor(3, pixels.Color(100, 0, 0));
     pixels1.setPixelColor(2, pixels.Color(100, 0, 0));
     pixels1.setPixelColor(1, pixels.Color(100, 0, 0));
+    pixels.show();
     pixels1.show();
   } else {
     pixels.setPixelColor(7, pixels.Color(100, 0, 0)); //"VOR"
@@ -91,6 +92,9 @@ void loop() {
     pixels1.setPixelColor(3, pixels.Color(100, 0, 0));
     pixels1.setPixelColor(2, pixels.Color(100, 0, 0));
     pixels1.setPixelColor(1, pixels.Color(100, 0, 0));
+
+    pixels.show();
+    pixels1.show();
   }
 
   pixels.setPixelColor(63, pixels.Color(100, 0, 0)); //"ES IST"
@@ -267,6 +271,7 @@ void loop() {
       pixels.setPixelColor(45, pixels.Color(100, 0, 0));
       pixels.setPixelColor(44, pixels.Color(100, 0, 0));
       pixels.show();
+      pixels1.show();
       break;
     case 25:
       pixels1.setPixelColor(63, pixels.Color(100, 0, 0));
@@ -283,6 +288,7 @@ void loop() {
       pixels.setPixelColor(45, pixels.Color(100, 0, 0));
       pixels.setPixelColor(44, pixels.Color(100, 0, 0));
       pixels.show();
+      pixels1.show();
       break;
     case 30:
       pixels.setPixelColor(47, pixels.Color(100, 0, 0));
@@ -307,6 +313,7 @@ void loop() {
       pixels.setPixelColor(45, pixels.Color(100, 0, 0));
       pixels.setPixelColor(44, pixels.Color(100, 0, 0));
       pixels.show();
+      pixels1.show();
       break;
     case 40:
       pixels1.setPixelColor(59, pixels.Color(100, 0, 0));
@@ -324,6 +331,7 @@ void loop() {
       pixels.setPixelColor(45, pixels.Color(100, 0, 0));
       pixels.setPixelColor(44, pixels.Color(100, 0, 0));
       pixels.show();
+      pixels1.show();
       break;
     case 45:
       pixels.setPixelColor(43, pixels.Color(100, 0, 0));
