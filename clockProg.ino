@@ -23,9 +23,12 @@
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel pixels1(NUMPIXELS1, PIN1, NEO_GRB + NEO_KHZ800);
 
-#define DELAYVAL 200 // Time (in milliseconds) to pause between pixels
+#define DELAYVAL 5000 // Time (in milliseconds) to pause between pixels
 
 RTC_DS1307 rtc; //initialize correct RTC version
+
+int hour = 0;
+int minute = 0;
 
 void setup() {
   Serial.begin(9600); //set BAUD of Arduino
@@ -41,15 +44,16 @@ void setup() {
 }
 
 void loop() {
+  pixels.clear(); //clear LEDs for next loop
+  pixels1.clear();
 
-  //initialize time variables
-  int hour = 0;
-  int minute = 0;
+  int tempHour = hour; //temporary clone of hour for error-free loop handling
+  
 
   //update time variables with RTC values
-  DateTime now = rtc.now();
+  /*DateTime now = rtc.now();
   hour = now.hour();
-  minute = now.minute();
+  minute = now.minute();*/
 
     if ((minute % 5) != 0) //round down minute to next lowest multiple of 5
   {
@@ -59,12 +63,12 @@ void loop() {
 
   if (minute == 0 || minute == 5 || minute == 10) //make Viertel, Halb, Dreviertel work correctly
   {} else {
-    hour += 1;
+    tempHour += 1;
   }
 
-  if (hour > 12) //AM PM swap
+  if (tempHour > 12) //AM PM swap
   {
-    hour = hour % 12;
+    tempHour = tempHour % 12;
 
     pixels.setPixelColor(3, pixels.Color(100, 0, 0)); //"NACH"
     pixels.setPixelColor(2, pixels.Color(100, 0, 0));
@@ -106,7 +110,7 @@ void loop() {
 
 
   //switch on correct LEDs for the corresponding hours/minutes
-  switch (hour)
+  switch (tempHour)
   {
     case 0:
       pixels.setPixelColor(39, pixels.Color(100, 0, 0));
@@ -380,22 +384,15 @@ void loop() {
 
   delay(DELAYVAL);
 
-  /*pixels.clear(); // Set all pixel colors to 'off'
-  pixels1.clear();
+  //Auto-cycler for testing purposes
+  minute += 5;
 
+  if (minute >= 60)
+  {
+    minute = 0;
+    hour += 1;
+  }
 
-    for(int i=0; i<NUMPIXELS; i++) { // For each pixel...
-    // pixels.Color() takes RGB values, from 0,0,0 up to 255,255,255
-    // Here we're using a moderately bright green color:
-    pixels.setPixelColor(i, pixels.Color(50, 0, 0));
-    pixels1.setPixelColor(i, pixels.Color(50, 0, 0));
-
-    pixels.show();   // Send the updated pixel colors to the hardware.
-    pixels1.show();
-
-    delay(DELAYVAL); // Pause before next pass through loop
-    }*/
-
-
-
+  Serial.print(hour);
+  Serial.println(minute);
 }
