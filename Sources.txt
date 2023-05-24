@@ -1,0 +1,7 @@
+Word Clock Deckel Layout created w/ TinkerCAD
+Program made w/ Arduino IDE
+
+Manual: Canva elements (last accessed: 24.05.23)
+
+Concept: Matrix: Canva element (24.05.23)
+	   Picture Front: Screenshot of TinkerCAD UI (24.05.23)
